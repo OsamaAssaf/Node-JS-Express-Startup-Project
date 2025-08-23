@@ -37,7 +37,7 @@ export async function create(
     const user = await prisma.user.create({
       data: { email: req.body.email, name: req.body.name, password: hashedPassword },
     });
-    res.status(201).json(user);
+    successResponse({ res, data: user });
   } catch (e) {
     next(e);
   }
